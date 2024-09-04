@@ -34,7 +34,29 @@ public class PhotoshopFiller extends Component {
     public void brighten(int amount) {
         outputName = "brightened" + outputName;
         
-        // your code here
+        
+        // iterate through each row within the image
+        for (int i = 0; i < pixels.length; i++) {
+        	
+        	// iterate through each pixel within a row
+        	for (int j = 0; j < pixels[i].length; j++) {
+        		
+        		
+        		// access each pixel and increase by the inputted amount
+        		int r = pixels[i][j].getRed() + amount;
+        		int g = pixels[i][j].getGreen() + amount;
+        		int b = pixels[i][j].getBlue() + amount;
+        		
+        		
+        		// limit the altered pixel's values between 0 and 255
+        		r = Math.max(Math.min(255, r), 0);
+        		g = Math.max(Math.min(255, g), 0);
+        		b = Math.max(Math.min(255, b), 0);
+        		
+        		// place the altered pixel into the image
+        		pixels[i][j] = new Color(r,g,b);
+        	}
+        }
         
     }
     
