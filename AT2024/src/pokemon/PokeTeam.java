@@ -2,6 +2,10 @@ package pokemon;
 import java.util.ArrayList;
 
 public abstract class PokeTeam {
+	
+	// each team receives a score - the sum of each pokemon's score
+	// a team's score may not exceed 1050
+	// a team must contain 3 pokemon
 
 	private ArrayList<Pokemon> team;
 	private String name;

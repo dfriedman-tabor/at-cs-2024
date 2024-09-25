@@ -15,7 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class PokeBattleRunner {
+	
+	// arrays for type/status choices. When choosing a type/status, use corresponding index
+	// e.g. a fire type pokemon would have type = 1
+	// e.g. a move that poisons a pokemon would have effect = 2
+	public static final String[] types = {"normal","fire","water","grass"};
+	public static final String[] stati = {"", "put to sleep","poisoned","confused","paralyzed"};
 
+	
+	
 	public Image background, pokeballImg;
 	public static int WIDTH = 950, HEIGHT = WIDTH*700/1280;
 	public static int POKEWIDTH, POKEHEIGHT;
@@ -29,9 +37,6 @@ public class PokeBattleRunner {
 	public JTextArea text;
 	private int attackType = -1;
 	private int attackX, attackY;
-	
-	public static final String[] types = {"normal","fire","water","grass"};
-	public static final String[] stati = {"", "put to sleep","poisoned","confused","paralyzed"};
 	
 	
 	public static final String[] statiLabels = {"","ASP", "PSN", "CNF","PAR"};

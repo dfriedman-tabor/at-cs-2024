@@ -6,13 +6,17 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public abstract class Pokemon {
-
-	private String name;
-	private int type, health;
-	private double maxHealth;
-	private Image img;
-	private int status = 0;
-	public Move[] moves;
+	
+	// each pokemon receives a score - calculated by 2*health + sum(all moves' damage) + 30*(number of moves that have an effect)
+	// each pokemon must have 4 moves
+	
+	private String name;	
+	private int type;	// refer to PokeBattleRunner for index
+	private int health;	// pokemon's current health
+	private double maxHealth;	// pokemon's starting health
+	private Image img;		// pokemon's icon
+	private int status = 0;		// current status inflicted by opponent - refer to PokeBattleRunner for index
+	public Move[] moves;		// array containing the 4 moves this pokemon can perform
 	private boolean canMove = true;
 	
 	public Pokemon(String pokeName, int type, int health, String imgName, Move[] moves) {
