@@ -4,8 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JOptionPane;
 
-import inheritance.BankAccount;
-
 public class TeamBattleRunner extends PokeBattleRunner {
 
 	private PokeTeam[] teams;
