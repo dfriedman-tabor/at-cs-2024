@@ -82,6 +82,9 @@ public class GUIExample {
 				
 				
 				System.out.println(e.getX() + ", " + e.getY());
+				
+				
+				canvas.repaint();
 			}
 
 			@Override
