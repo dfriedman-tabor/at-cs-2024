@@ -5,16 +5,25 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import graphicsEditor.Shape;
+
 public class GUIExample {
 	
 	// constants (to avoid magic numbers)
 	final int WIDTH = 800, HEIGHT = 600, CANVAS_HEIGHT = HEIGHT * 2 / 3;
+	
+	ArrayList<Shape> shapes = new ArrayList<Shape>();
+	
+	Mode mode = Mode.CIRCLE;
 
 	public GUIExample() {
 		
@@ -65,6 +74,29 @@ public class GUIExample {
 				g.fillRect(0, 0, GUIExample.this.WIDTH, CANVAS_HEIGHT);
 			}
 		};
+		
+		
+		canvas.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				
+				System.out.println(e.getX() + ", " + e.getY());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+
+			@Override
+			public void mouseExited(MouseEvent e) {}
+		});	
 		canvas.setPreferredSize(new Dimension(WIDTH, CANVAS_HEIGHT));
 
 		
