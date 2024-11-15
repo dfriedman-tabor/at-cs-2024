@@ -4,21 +4,6 @@ import java.util.HashSet;
 
 public class Anagrams {
 	
-//	# def jumbles(word):
-//		#
-//		#     return (jumbles2(word, [""]))
-//		#
-//		# def jumbles2(word, soln):
-//		#     if len(word) == 0: return soln
-//		#     newsoln = set()
-//		#     for s in soln:
-//		#         for i in range(len(s)):
-//		#             newWord = s[:i] + word[0] + s[i:]
-//		#             newsoln.add(newWord)
-//		#         newsoln.add(s + word[0])
-//		#     return jumbles2(word[1:], newsoln)
-//	
-	
 	
 	public static HashSet<String> anagrams(String word) {
 		
