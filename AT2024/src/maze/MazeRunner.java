@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
+
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,12 +22,12 @@ import javax.swing.KeyStroke;
 
 public class MazeRunner {
 	
-	private int speed = 100; // default is 100- smaller = slower
+	private int speed = 500; // default is 100- smaller = slower
 	
 	// constructs and adds the bots competing into the maze
 	private void addBots() {
 		Bot[] bots = {
-				new RandomBot(this, Color.red)};
+				new SuperBot(this, Color.red), new LeftBot(this,Color.blue)};
 		for (Bot b : bots)
 			robots.put(b, new RobotInfo());
 	}
@@ -43,7 +45,7 @@ public class MazeRunner {
 	// true = white, false = black
 	private boolean[][] maze = new boolean[ROWS][COLS];
 	
-	private HashMap<Bot, RobotInfo> robots = new HashMap<Bot, RobotInfo>();
+	private ConcurrentHashMap<Bot, RobotInfo> robots = new ConcurrentHashMap<Bot, RobotInfo>();
 
 	private Point begin = new Point(0, (int)(Math.random() * (COLS-2) + 1));
 	private final Point goal = new Point(ROWS-1, (int)(Math.random() * (COLS-2) + 1));
@@ -359,7 +361,7 @@ public class MazeRunner {
 		frame.getContentPane().repaint();
 		fillMaze();
 		addBots();
-		
+				
 		// runs the maze until a robot has reached the end
 		while (true) {
 			if (!paused) {
@@ -391,8 +393,7 @@ public class MazeRunner {
 			if (robots.get(b) == null) continue;
 			if (robots.get(b).loc.equals(goal)) {
 				System.out.println(b.getClass() + ": "+count);
-				robots.put(b, null);
-			}
+				robots.remove(b);		}
 		}
 		return null;
 	}

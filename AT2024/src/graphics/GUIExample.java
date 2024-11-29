@@ -3,6 +3,7 @@ package graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -25,6 +26,7 @@ public class GUIExample {
 	Mode mode = Mode.CIRCLE;
 
 	public GUIExample() {
+		
 		
 		JFrame window = new JFrame("GUI Example");
 		window.setSize(WIDTH, HEIGHT);
