@@ -1,5 +1,6 @@
 package graphs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -48,6 +49,54 @@ public class Graph<T> {
 
 	}
 	
+	public ArrayList<T> bfs(T start, T end) {
+		
+		Vertex startV = vertices.get(start);		
+		Vertex endV = vertices.get(end);
+		
+		if (startV == null || endV == null) {
+			return null;
+		}
+
+		ArrayList<Vertex> toVisit = new ArrayList<>();
+		toVisit.add(startV);
+		HashMap<Vertex, Vertex> cameFrom = new HashMap<Vertex, Vertex>();
+		cameFrom.put(startV, null);
+		
+		while (toVisit.size() > 0) {
+			
+			Vertex curr = toVisit.remove(0);
+			
+			if (curr == endV) {
+				return backtrace(cameFrom, endV);
+			}
+			
+			for (Vertex v : curr.neighbors) {
+				if (!cameFrom.containsKey(v)) {
+					toVisit.add(v);
+					cameFrom.put(v, curr);
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	public ArrayList<T> backtrace(HashMap<Vertex, Vertex> cameFrom, Vertex end) {
+		
+		Vertex curr = end;
+		
+		ArrayList<T> path = new ArrayList<T>();
+		
+		while (curr != null) {
+			
+			path.add(0, curr.info);
+			curr = cameFrom.get(curr);
+		}
+		
+		return path;
+	}
+	
 	
 	public static void main(String[] args) {
 		
@@ -67,7 +116,7 @@ public class Graph<T> {
 		g.connect("B", "D");
 		g.connect("C", "D");
 		
-		System.out.println(g.vertices.get("A").neighbors);
+		System.out.println(g.bfs("A", "D"));
 
 	}
 	
