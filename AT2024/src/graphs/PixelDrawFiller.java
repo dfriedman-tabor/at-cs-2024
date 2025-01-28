@@ -30,7 +30,8 @@ public class PixelDraw {
 
 	
 	public void draw(int x, int y) {
-		pixels[y/PIXELHEIGHT][x/PIXELWIDTH] = true;
+		if (x >=0 && x < WIDTH && y >= 0 && y < HEIGHT)
+			pixels[y/PIXELHEIGHT][x/PIXELWIDTH] = true;
 	}
 	
 	public PixelDraw() {
