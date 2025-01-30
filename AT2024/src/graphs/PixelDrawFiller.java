@@ -13,6 +13,10 @@ import javax.swing.JPanel;
 
 public class PixelDraw {
 	
+	// used to practice implementing BFT on a non-graph object. 
+	// use the Point class to keep track of coordinates, remember that x -> j and y -> i when converting from coordinates to indices
+	// click and drag to draw, right click (2-press on mac) to fill
+	
 
 	
 	public void autofill(int x, int y) {
