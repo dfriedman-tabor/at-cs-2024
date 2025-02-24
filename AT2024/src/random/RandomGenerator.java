@@ -20,8 +20,13 @@ public class RandomGenerator {
 	
 
 	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++) {
-			System.out.println(rand1to7());
+		int[] outputs = new int[7];
+		for (int i = 0; i < 100000; i++) {
+			outputs[rand1to7()-1] += 1;
+		}
+		
+		for (int i = 0; i < 7; i++) {
+			System.out.println(i+1 + ": " + outputs[i]/100000.0);
 		}
 	}
 
